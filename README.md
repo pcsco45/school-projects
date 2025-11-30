@@ -7,3 +7,4 @@ Including:
  - getPassword function with validation
  - passwordStrength function
  - RockPaperScissors game
+ - simple algorithm to switch two variables
