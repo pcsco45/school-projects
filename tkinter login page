@@ -1,0 +1,55 @@
+from tkinter import *
+
+class Window():
+    def __init__(self, master):
+        self.master = master
+        self.master.title("Username Password program")
+        self.master.geometry("650x300")
+        self.master.configure(background = "#8AE68A")
+
+        self.photo = PhotoImage(file = "python.gif")
+        self.photoLabel = Label(self.master, image = self.photo, bg = "#8AE68A")
+        self.photoLabel.pack()
+
+        self.titleLab = Label(self.master, text = "Enter your username and password", font = ("Helvetica", 16), bg = "#8AE68A")
+        self.titleLab.pack()
+
+        self.username = Label(self.master, text = "Username", bg = "#8AE68A")
+        self.username.pack()
+        self.entryUser = Entry(self.master)
+        self.entryUser.pack()
+
+        self.password = Label(self.master, text = "Password", bg = "#8AE68A")
+        self.password.pack()
+        self.entryPass = Entry(self.master)
+        self.entryPass.pack()
+
+        self.loginButton = Button(self.master, text = "Login", bg = "#383A39", command = self.grantAccess)
+        self.loginButton.pack()
+        
+    def grantAccess(self):
+        username = "Ahmed"
+        password = "password"
+        userUsername = self.entryUser.get()
+        userPass = self.entryPass.get()
+        print(userUsername)
+        print(userPass)
+
+        if (userUsername != username) & (userPass != password):
+            self.titleLab.configure(text = "Invalid username and password. Please try again")
+            self.entryUser.delete(0, END)
+            self.entryPass.delete(0, END)
+            
+        if (userUsername == username) & (userPass == password):
+            self.entryUser.destroy()
+            self.entryPass.destroy()
+            self.username.destroy()
+            self.password.destroy()
+            self.loginButton.destroy()
+
+            self.titleLab.configure(text = "Welcome" + userUsername)
+
+root = Tk()
+userPassWindow = Window(root)
+
+root.mainloop()
